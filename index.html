@@ -1,1 +1,54 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Voice AI</title>
+</head>
 
+<body>
+
+<h1>🎙️ My Voice AI</h1>
+
+<textarea id="text" rows="10" cols="40" placeholder="ဒီနေရာမှာ စာသားထည့်ပါ..."></textarea>
+
+<br><br>
+
+<button onclick="generateVoice()">🎤 Generate Voice</button>
+
+<p id="status"></p>
+
+<script>
+
+function generateVoice() {
+
+var text = document.getElementById("text").value;
+
+var status = document.getElementById("status");
+
+if (text.trim() == "") {
+
+status.innerText = "ကျေးဇူးပြုပြီး စာသားထည့်ပါ";
+
+return;
+
+}
+
+var voice = new SpeechSynthesisUtterance(text);
+
+voice.lang = "my-MM";
+
+voice.rate = 1;
+
+voice.pitch = 1;
+
+status.innerText = "အသံဖန်တီးနေပါတယ်...";
+
+window.speechSynthesis.speak(voice);
+
+}
+
+</script>
+
+</body>
+</html>
