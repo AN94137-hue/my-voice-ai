@@ -99,16 +99,35 @@
   </div>
 
   <script>
-    function generateVoice() {
-      const text = document.getElementById("text").value;
-      const status = document.getElementById("status");
+function generateVoice() {
+  const text = document.getElementById("text").value;
+  const status = document.getElementById("status");
 
-      if (text.trim() === "") {
-        status.innerText = "ကျေးဇူးပြုပြီး စာသားထည့်ပါ";
-        return;
-      }
+  if (text.trim() === "") {
+    status.innerText = "ကျေးဇူးပြုပြီး စာသားထည့်ပါ";
+    return;
+  }
 
-      status.innerText = "အသံဖန်တီးနေပါတယ်...";
+  window.speechSynthesis.cancel();
+
+  const voice = new SpeechSynthesisUtterance(text);
+  voice.lang = "my-MM";
+  voice.rate = 1;
+  voice.pitch = 1;
+
+  voice.onstart = () => {
+    status.innerText = "အသံဖန်တီးနေပါတယ်...";
+  };
+
+  voice.onend = () => {
+    status.innerText = "အသံပြီးပါပြီ";
+  };
+
+  voice.onerror = () => {
+    status.innerText = "အသံထွက်မရပါ";
+  };
+
+  window.speechSynthesis.speak(voice);
     }
   </script>
 
