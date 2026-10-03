@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Voice AI</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #111827;
+      color: white;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: auto;
+      padding: 30px 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #9ca3af;
+      margin-bottom: 30px;
+    }
+
+    textarea {
+      width: 100%;
+      height: 250px;
+      box-sizing: border-box;
+      padding: 18px;
+      border-radius: 15px;
+      border: 1px solid #374151;
+      background: #1f2937;
+      color: white;
+      font-size: 18px;
+      resize: vertical;
+      outline: none;
+    }
+
+    textarea:focus {
+      border-color: #6366f1;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 20px;
+      padding: 16px;
+      border: none;
+      border-radius: 12px;
+      background: #6366f1;
+      color: white;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:active {
+      transform: scale(0.98);
+    }
+
+    .status {
+      text-align: center;
+      margin-top: 20px;
+      color: #9ca3af;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <h1>🎙️ My Voice AI</h1>
+
+    <div class="subtitle">
+      Text to Speech & Voice Clone
+    </div>
+
+    <textarea
+      id="text"
+      placeholder="ဒီနေရာမှာ စာသားထည့်ပါ..."
+    ></textarea>
+
+    <button onclick="generateVoice()">
+      🎤 Generate Voice
+    </button>
+
+    <div class="status" id="status">
+      အသံဖန်တီးရန် စာသားထည့်ပါ
+    </div>
+
+  </div>
+
+  <script>
+    function generateVoice() {
+      const text = document.getElementById("text").value;
+      const status = document.getElementById("status");
+
+      if (text.trim() === "") {
+        status.innerText = "ကျေးဇူးပြုပြီး စာသားထည့်ပါ";
+        return;
+      }
+
+      status.innerText = "အသံဖန်တီးနေပါတယ်...";
+    }
+  </script>
+
+</body>
+      </html>
